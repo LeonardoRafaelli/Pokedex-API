@@ -16,15 +16,32 @@ logo.style.width = '200px'
 divLogo.appendChild(logo);
 
 
-
+// FETCH
 fetch(`https://prof-poke-api.herokuapp.com/api/pokemon/${pokemonId}`)
 .then(result => {
     result.json().then(e => {
+        showPokemon(e)
+    })
+})
+
+//Botão voltar
+function createBackBtn() {
+    const a = document.createElement('a');
+    a.href = '../principal.html'
+    const backButton = document.createElement('button');
+    backButton.className = 'back-btn';
+    backButton.innerText = 'Voltar';
+    a.appendChild(backButton);
+    body.appendChild(a);
+}
+
+function showPokemon(e) {
+    const pokemonContainer = document.createElement('div');
+        pokemonContainer.className = 'pokemon-container';
         const divNome = document.createElement('div');
         divNome.className = 'div-nome';
         const nome = document.createElement('h3');
-        nome.innerText = e.name;
-        nome.innerText = nome.innerText.toUpperCase()
+        nome.innerText = e.name.toUpperCase();
         
         const icone = document.createElement('img');
         icone.className = 'icone-pokemon';
@@ -41,32 +58,32 @@ fetch(`https://prof-poke-api.herokuapp.com/api/pokemon/${pokemonId}`)
         
         divNome.appendChild(nome);
         divNome.appendChild(icone);
-        body.appendChild(divNome);
+        pokemonContainer.appendChild(divNome);
         
-        // console.log(e);
-    })
-})
-
-// Criando uma Tabela
-const table = document.createElement('table');
-setTimeout(() => {
-    atributos.forEach(e => {
-        const linha = document.createElement('tr');
-        const head = document.createElement('th');
-        head.innerText = e.nome;
-        const atributo = document.createElement('td');
-        atributo.innerText = e.atributo;
-
-        linha.appendChild(head);
-        linha.appendChild(atributo);
-        table.appendChild(linha);
-    })
-
-    body.appendChild(table);
-    console.log(atributos);
-}, 500);
+        showPower(pokemonContainer, divNome);
+        createBackBtn();
+}
 
 
 
-
-
+function showPower(pokemonContainer, divNome) {
+    // Criando uma Tabela
+    const table = document.createElement('table');
+    // setTimeout(() => {
+        atributos.forEach(e => {
+            const linha = document.createElement('tr');
+            const head = document.createElement('th');
+            head.innerText = e.nome;
+            const atributo = document.createElement('td');
+            atributo.innerText = e.atributo;
+    
+            linha.appendChild(head);
+            linha.appendChild(atributo);
+            table.appendChild(linha);
+        })
+        
+        divNome.appendChild(table);
+        body.appendChild(pokemonContainer);
+        console.log(atributos);
+    // }, 600);
+}

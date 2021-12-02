@@ -1,27 +1,69 @@
+html{
+    background-color: rgb(102, 72, 187);
+}
+
 .div-pokemon{
     display: flex;
 }
 
 .div-logo{
     width: 100%;
-    border: 1px solid purple;
     text-align:center;
 }
 
-.div-filter{
-    text-align: center;
-}
-
-.input-filter{
-    width: 30%;
-    height: 20px;
-}
-
 .div-nome{
-    width: 100%;
-    text-align: center;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    border-radius: 10px ;
+    padding: 20px;
 }
 
 .icone-pokemon{
     width: 200px;
+}
+
+.pokemon-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+
+td {
+    width: 20%;
+    border: 1px solid green;
+    border-radius: 5px;
+} 
+
+ th {
+    width: 150px;
+    border: 1px solid purple;
+    border-radius: 5px;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    width: 100px;
+    height: 25px;
+    margin-left: 20vw;
+    background-color: rgb(1, 183, 104);
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.568);
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+
+
+button:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.568);
+    background-color: rgb(78, 206, 151);
+    transition: .2s;
 }

@@ -1,4 +1,7 @@
+const html = document.querySelector('html');
 const body = document.querySelector('body');
+html.style.backgroundColor = `rgb(102, 72, 187)`
+
 const pokemonNames = [];
 
 // Div-log
@@ -16,6 +19,7 @@ divLogo.appendChild(logo);
 // Input para a pesquisa dos pokemons
 const inputFilter = document.createElement('input');
 inputFilter.className = 'input-filter';
+inputFilter.placeholder = 'Busque aqui o seu pokemon'
 
 // Div do input e botão
 const divFilter = document.createElement('div');
@@ -25,7 +29,10 @@ divFilter.appendChild(inputFilter);
 // Botão para a pesquisa
 const btnBuscar = document.createElement('button');
 btnBuscar.className = 'btn-buscar'
+// btnBuscar.style.backgroundColor = `rgb(1, 183, 104`
+
 btnBuscar.innerText = 'Buscar Pokemon';
+
 divFilter.appendChild(btnBuscar);
 body.appendChild(divFilter);
 
@@ -51,54 +58,39 @@ fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
 
         array.forEach(pokemon => {
             const linha = document.createElement('tr');
-
             const dataImg = document.createElement('th');
             const dataNome = document.createElement('td');
-            const dataBtn = document.createElement('td');
+            // const dataBtn = document.createElement('td');
 
             
 
-            // const linha = document.createElement('li');
-            // //Criando o botão para cada pokemon
+
+            //Criando o botão para cada pokemon
             const verPokemon = document.createElement('button');
             verPokemon.innerText = 'Analisar Pokemon';
             verPokemon.className = 'ver-pokemon';
             //Criando o link para cada pokemon
             const linkPokemon = document.createElement('a');
             linkPokemon.href = `./eachPokemon/pokemonPage.html?${pokemon.id}`
-            linkPokemon.appendChild(verPokemon);
+            linkPokemon.appendChild(dataImg);
+            linkPokemon.appendChild(dataNome);
+
 
             dataNome.innerText = pokemon.name;
             dataNome.innerText = dataNome.innerText.toUpperCase();
-            dataBtn.appendChild(linkPokemon);
-
-            // const divPokemon = document.createElement('div');
-            // divPokemon.className = 'div-pokemon';
 
             const icon = document.createElement('img');
-
             icon.src = pokemon.url_icon;
             icon.className = 'pokemon-icon';
             icon.onerror = function () {
-                icon.src = pokemon.url_icon;
+                icon.src = pokemon.url_icon_2;
             }
             dataImg.appendChild(icon);
 
-            // const nome = document.createElement('p');
-            // nome.innerText = pokemon.name;
-
-            // divPokemon.appendChild(icon);
-            // divPokemon.appendChild(nome);
-            // divPokemon.appendChild(linkPokemon);
-            // linha.appendChild(divPokemon);
-            // orderedList.appendChild(linha);
-
-            // console.log(pokemon);
             pokemonNames.push({name: pokemon.name});
             
-            linha.appendChild(dataImg);
-            linha.appendChild(dataNome);
-            linha.appendChild(dataBtn);
+            linha.appendChild(linkPokemon);
+
            table.appendChild(linha);
         });
     })
