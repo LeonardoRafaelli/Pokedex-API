@@ -1,0 +1,27 @@
+.div-pokemon{
+    display: flex;
+}
+
+.div-logo{
+    width: 100%;
+    border: 1px solid purple;
+    text-align:center;
+}
+
+.div-filter{
+    text-align: center;
+}
+
+.input-filter{
+    width: 30%;
+    height: 20px;
+}
+
+.div-nome{
+    width: 100%;
+    text-align: center;
+}
+
+.icone-pokemon{
+    width: 200px;
+}
