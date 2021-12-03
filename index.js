@@ -18,6 +18,10 @@ divLogo.appendChild(logo);
 
 // Input para a pesquisa dos pokemons
 const inputFilter = document.createElement('input');
+inputFilter.addEventListener('keydown', function(){
+    inputFilter.style.borderColor = `rgb(${Math.floor(Math.random() * 255 + 1)}, ${Math.floor(Math.random() * 255 + 1)}, ${Math.floor(Math.random() * 255 + 1)})`
+})
+
 inputFilter.className = 'input-filter';
 inputFilter.placeholder = 'Busque aqui o seu pokemon'
 
